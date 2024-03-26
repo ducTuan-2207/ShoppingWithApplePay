@@ -11,6 +11,8 @@
 		221F170F2BB1D73000A37D15 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221F170E2BB1D73000A37D15 /* ContentView.swift */; };
 		221F17112BB1D73200A37D15 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 221F17102BB1D73200A37D15 /* Assets.xcassets */; };
 		221F17142BB1D73200A37D15 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 221F17132BB1D73200A37D15 /* Preview Assets.xcassets */; };
+		22A425F62BB31F0900145F97 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A425F52BB31F0900145F97 /* Product.swift */; };
+		22A425F92BB32BFB00145F97 /* ProductCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A425F82BB32BFB00145F97 /* ProductCard.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +21,8 @@
 		221F170E2BB1D73000A37D15 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		221F17102BB1D73200A37D15 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		221F17132BB1D73200A37D15 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		22A425F52BB31F0900145F97 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
+		22A425F82BB32BFB00145F97 /* ProductCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCard.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +55,8 @@
 		221F170B2BB1D73000A37D15 /* ShoppingWithApplePay */ = {
 			isa = PBXGroup;
 			children = (
+				22A425F72BB32BA200145F97 /* Components */,
+				22A425F42BB31B0600145F97 /* Models */,
 				221F170C2BB1D73000A37D15 /* ShoppingWithApplePayApp.swift */,
 				221F170E2BB1D73000A37D15 /* ContentView.swift */,
 				221F17102BB1D73200A37D15 /* Assets.xcassets */,
@@ -65,6 +71,22 @@
 				221F17132BB1D73200A37D15 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		22A425F42BB31B0600145F97 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				22A425F52BB31F0900145F97 /* Product.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		22A425F72BB32BA200145F97 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				22A425F82BB32BFB00145F97 /* ProductCard.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,8 +159,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22A425F62BB31F0900145F97 /* Product.swift in Sources */,
 				221F170F2BB1D73000A37D15 /* ContentView.swift in Sources */,
 				221F170D2BB1D73000A37D15 /* ShoppingWithApplePayApp.swift in Sources */,
+				22A425F92BB32BFB00145F97 /* ProductCard.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
