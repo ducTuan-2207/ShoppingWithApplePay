@@ -1,20 +1,18 @@
-//
-//  ProductDetailView.swift
-//  ShoppingWithApplePay
-//
-//  Created by macOS on 27/03/2024.
-//
-
 import SwiftUI
 
 struct ProductDetailView: View {
+    @EnvironmentObject var cartManager: CartManager
+    var product: Product
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ProductDetail(product: product)
     }
 }
 
 struct ProductDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        ProductDetailView()
+        // Truyền vào một sản phẩm và CartManager cho xem trước
+        ProductDetailView(product: ProductList[0])
+            .environmentObject(CartManager())
     }
 }

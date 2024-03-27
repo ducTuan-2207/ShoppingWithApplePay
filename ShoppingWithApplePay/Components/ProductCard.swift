@@ -2,8 +2,8 @@ import SwiftUI
 
 struct ProductCard: View {
     var product: Product
-    // Sử dụng @EnvironmentObject để truy cập đến CartManager được chia sẻ trong toàn bộ cây view hierarchy
     @EnvironmentObject var cartManager: CartManager
+    @State private var isShowingDetail = false
     
     var body: some View {
         ZStack(alignment: .topTrailing) {
@@ -13,6 +13,9 @@ struct ProductCard: View {
                     .cornerRadius(20)
                     .frame(width: 180)
                     .scaledToFit()
+                    .onTapGesture {
+                        isShowingDetail.toggle()
+                    }
                 VStack(alignment: .leading){
                     Text(product.name)
                         .bold()
@@ -21,15 +24,13 @@ struct ProductCard: View {
                 }
                 .padding()
                 .frame(width: 180, alignment: .leading)
-                .background(Color.white.opacity(0.5)
-)
+                .background(Color.white.opacity(0.5)) // Đóng dấu ngoặc đơn ở đây
                 .cornerRadius(20)
             }
             .frame(width: 180, height: 250)
             .shadow(radius: 3)
             
             Button {
-                // Thêm sản phẩm vào giỏ hàng khi nút được nhấn
                 cartManager.addToCart(product: product)
             } label: {
                 Image(systemName: "plus")
@@ -38,12 +39,14 @@ struct ProductCard: View {
                     .background(Color.black)
                     .cornerRadius(50)
                     .padding()
-                
             }
-
+        }
+        .sheet(isPresented: $isShowingDetail) {
+            ProductDetailView(product: product) // Truyền closure chứa ProductDetailView
         }
     }
 }
+
 
 struct ProductCard_Previews: PreviewProvider {
     static var previews: some View {

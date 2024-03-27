@@ -9,8 +9,10 @@ import SwiftUI
 
 struct ProductDetail: View {
     var product: Product
+    @EnvironmentObject var cartManager: CartManager
     @State private var selectedSize: String?
     @State private var quantity: Int = 1
+    @State private var isShowingConfirmation = false
     
     var body: some View {
         VStack {
@@ -55,16 +57,25 @@ struct ProductDetail: View {
                         }
                     }
                 }
+                
+                Stepper("Số lượng : \(quantity)", value: Binding<Int>(
+                    get: { self.quantity },
+                    set: { newValue in
+                        self.quantity = newValue
+                        isShowingConfirmation = false // Đảm bảo là hộp thoại xác nhận không được hiển thị khi số lượng sản phẩm thay đổi
+                    }
+                ), in: 1...10)
+                .font(.title2).bold()
 
-                Stepper("Số lượng : \(quantity)", value: $quantity, in: 1...10)
-                    .font(.title2).bold()
                 Button {
-                    
+                    cartManager.addToCart(product: product)
+                    isShowingConfirmation = true
                 } label: {
                     HStack {
                         Image(systemName: "cart")
                         Text("Thêm vào giỏ hàng")
-                                
+                        
+                        
                     }
                     .fontWeight(.bold)
                     .padding()
@@ -75,12 +86,20 @@ struct ProductDetail: View {
                 
             }
             .padding()
+            .alert(isPresented: $isShowingConfirmation) {
+                Alert(
+                    title: Text("Thêm vào giỏ hàng thành công"),
+                    message: Text("Sản phẩm đã được thêm vào giỏ hàng."),
+                    dismissButton: .default(Text("OK"))
+                )
+            }
         }
     }
-}
-
-struct ProductDetail_Previews: PreviewProvider {
-    static var previews: some View {
-        ProductDetail(product: ProductList[0])
+    
+    struct ProductDetail_Previews: PreviewProvider {
+        static var previews: some View {
+            ProductDetail(product: ProductList[0])
+                .environmentObject(CartManager())
+        }
     }
 }
